@@ -262,7 +262,13 @@ module Vebra
       # was: { :bullets => [ { :value => #<value> }, { :value => #<value> } ] }
       # now: { :bullets => [ #<value>, #<value> ] }
       if hash[:bullets]
-        hash[:bullets].map! { |b| b[:value] }
+        if hash[:bullets].is_a?(::Hash)
+          if hash[:bullets].any?
+            hash[:bullets].map! { |b| b.to_s }
+          end
+        elsif hash[:bullets].is_a?(::String)
+          hash[:bullets].to_s
+        end
       end
 
       # was: { :paragraphs => [ #<paragraph - type a, #<paragraph - type b> ] }
