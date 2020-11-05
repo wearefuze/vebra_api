@@ -72,7 +72,7 @@ module Vebra
           unless child_node.name == "text" && child_result.nil?
             attr_key = (mappings[child_node.name] || child_node.name).downcase.to_sym
             attr_key = :value if attr_key == :text
-            
+
             if !node_hash[attr_key]
               # if this attribute hasn't yet been set, set it's value
               if child_result && collections.include?(attr_key)
