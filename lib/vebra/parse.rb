@@ -252,6 +252,7 @@ module Vebra
         hash[:agent_reference] = reference.delete(:agents)
       end
 
+      #TODO
       # was: { :area => [ #<area - imperial>, #<area - metric> ] }
       # now: { :area => { :imperial => #<imperial>, :metric => #<metric> } }
       # if area = hash[:area]
@@ -349,14 +350,14 @@ module Vebra
         end
       end
 
+      #Not working
       # was: { :garden/parking => nil } or: { :garden/parking => 0 }
       # now: { :garden/parking => false }
-      [:parking, :garden].each do |key|
-        if hash.keys.include?(key)
-          #TODO
-          #hash[key] = !hash[key].nil? && hash[key].to_i != 0
-        end
-      end
+      # [:parking, :garden].each do |key|
+      #   if hash.keys.include?(key)
+      #     hash[key] = !hash[key].nil? && hash[key].to_i != 0
+      #   end
+      # end
 
       hash
     end
